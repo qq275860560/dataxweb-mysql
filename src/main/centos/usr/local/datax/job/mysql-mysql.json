@@ -1,0 +1,61 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                 "channel": 3
+            },
+            "errorLimit": {
+                "record": 0,
+                "percentage": 0.02
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "root",
+                        "password": "123456",
+                        "column": [
+                            "id",
+                            "orgName"
+                        ],
+                        "connection": [
+                            {
+                                "table": [
+                                    "sp_bar_todo"
+                                ],
+                                "jdbcUrl": [
+     "jdbc:mysql://172.16.1.36:3306/spms?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false"
+                                ]
+                            }
+                        ]
+                    }`
+                },
+               "writer":  {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "column": [
+                            "id",
+                            "orgName"
+                        ],                      
+                        "preSql": [
+                            "delete from sp_bar_todo2"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://172.16.1.36:3306/spms?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false",
+                                "table": [
+                                    "sp_bar_todo2"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
