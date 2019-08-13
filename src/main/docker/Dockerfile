@@ -17,7 +17,7 @@ RUN chmod -R 777 /var/lib/mysql /usr/share/mysql /var/run/mysqld &&\
     
 RUN echo "import" &&\
     cd /usr/share/mysql/ && curl -fsSL -O "https://raw.githubusercontent.com/qq275860560/dataxweb/master/src/main/centos/usr/share/mysql/dataxweb.sql" &&\
-    mysql -uroot  -p123456  mysql< ./dataxweb.sql  2>/dev/null     &&\
+    mysql -uroot  -p123456  mysql< ./dataxweb.sql  2>/dev/null    
 
   
 CMD source /etc/profile &&\
